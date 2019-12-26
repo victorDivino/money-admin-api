@@ -1,43 +1,52 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using MoneyAdmin.Application.ViewModels;
 using MoneyAdmin.Domain;
 using MoneyAdmin.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MoneyAdmin.WebApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly IAccountRepositoryReadOnly _accountRepositoryReadOnly;
 
-        public AccountController(IAccountRepository accountRepository)
+        public AccountController(IAccountRepository accountRepository, IAccountRepositoryReadOnly accountRepositoryReadOnly)
         {
             _accountRepository = accountRepository;
+            _accountRepositoryReadOnly = accountRepositoryReadOnly;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Account>>> Get()
+        public ActionResult<IEnumerable<Account>> Get()
         {
             try
             {
-                return Ok(await _accountRepository.GetAll());
+                return Ok(_accountRepositoryReadOnly.GetAll());
             }
-            catch (TimeoutException)
+            catch (Exception ex)
             {
-                return new StatusCodeResult(504);
+                throw ex;
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateAsync(AccountViewModel accountViewModel)
+        public ActionResult Create(AccountViewModel accountViewModel)
         {
-            await _accountRepository.Add(new Account(accountViewModel.Name));
-
-            return Ok();
+            try
+            {
+                var account = new Account(accountViewModel.Name, accountViewModel.InitialValue);
+                _accountRepository.Add(account);
+                _accountRepository.Save();
+                return Ok(account);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

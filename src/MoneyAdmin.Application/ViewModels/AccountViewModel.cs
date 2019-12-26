@@ -10,5 +10,8 @@ namespace MoneyAdmin.Application.ViewModels
         [MaxLength(100)]
         [DisplayName("Name")]
         public string Name { get; set; }
+
+        [DisplayName("Initial Value")]
+        public decimal InitialValue { get; set; }
     }
 }

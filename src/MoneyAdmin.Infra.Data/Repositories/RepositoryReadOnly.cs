@@ -1,32 +1,28 @@
 ﻿using MoneyAdmin.Domain.Core.Models;
 using MoneyAdmin.Domain.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MoneyAdmin.Infra.Data.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : Entity
+    public class RepositoryReadOnly<T> : IRepositoryReadOnly<T> where T : Entity
     {
         private readonly MoneyAdminContext _context;
 
-        public Repository(MoneyAdminContext context)
+        public RepositoryReadOnly(MoneyAdminContext context)
         {
             _context = context;
         }
 
-        public void Add(T entity)
-        {
-            _context.Set<T>().Add(entity);
-        }
-
         public T GetById(Guid id)
         {
-            return _context.Set<T>().SingleOrDefault(m => m.Id == id);
+            return _context.Set<T>().SingleOrDefault(e => e.Id == id);
         }
 
-        public void Save()
+        public IEnumerable<T> GetAll()
         {
-            _context.SaveChanges();
+            return _context.Set<T>();
         }
     }
 }

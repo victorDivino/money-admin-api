@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{88FC1711-68E8-4EE6-87D4-74E219FC07D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{A73B581D-2C31-4ACA-AB07-70312E4FBAE7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.WebApi", "src\MoneyAdmin.WebApi\MoneyAdmin.WebApi.csproj", "{654F1D08-07CA-40E8-98F0-8F5891C789C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{00A2C413-BE66-43C7-AD4F-88078430D265}"
 EndProject
@@ -19,15 +17,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{DF642489-E56C-4BA8-B389-204143EDFA71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.Domain.Core", "src\MoneyAdmin.Domain.Core\MoneyAdmin.Domain.Core.csproj", "{2A8F1B4A-0B72-4CED-92B9-DB17E8A82E7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.Domain.Core", "src\MoneyAdmin.Domain.Core\MoneyAdmin.Domain.Core.csproj", "{2A8F1B4A-0B72-4CED-92B9-DB17E8A82E7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.Domain", "src\MoneyAdmin.Domain\MoneyAdmin.Domain.csproj", "{FFB007F4-6C7F-454C-9B63-0A258C94AA9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.Domain", "src\MoneyAdmin.Domain\MoneyAdmin.Domain.csproj", "{FFB007F4-6C7F-454C-9B63-0A258C94AA9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.Infra.Data", "src\MoneyAdmin.Infra.Data\MoneyAdmin.Infra.Data.csproj", "{1C5CBBC2-7DBB-42F5-AD7C-43F29DE1DEBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.Infra.Data", "src\MoneyAdmin.Infra.Data\MoneyAdmin.Infra.Data.csproj", "{1C5CBBC2-7DBB-42F5-AD7C-43F29DE1DEBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.Application", "src\MoneyAdmin.Application\MoneyAdmin.Application.csproj", "{27C733F6-8718-4B94-BCE9-00041A000B43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.Application", "src\MoneyAdmin.Application\MoneyAdmin.Application.csproj", "{27C733F6-8718-4B94-BCE9-00041A000B43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{96D5D5D4-F89B-4053-94B0-8DF788F89E2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.WebApi", "src\MoneyAdmin.WebApi\MoneyAdmin.WebApi.csproj", "{A5807157-343D-44E9-8E94-77122B2B1748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{654F1D08-07CA-40E8-98F0-8F5891C789C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{654F1D08-07CA-40E8-98F0-8F5891C789C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{654F1D08-07CA-40E8-98F0-8F5891C789C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{654F1D08-07CA-40E8-98F0-8F5891C789C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A8F1B4A-0B72-4CED-92B9-DB17E8A82E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A8F1B4A-0B72-4CED-92B9-DB17E8A82E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A8F1B4A-0B72-4CED-92B9-DB17E8A82E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,13 +51,16 @@ Global
 		{27C733F6-8718-4B94-BCE9-00041A000B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27C733F6-8718-4B94-BCE9-00041A000B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27C733F6-8718-4B94-BCE9-00041A000B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5807157-343D-44E9-8E94-77122B2B1748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5807157-343D-44E9-8E94-77122B2B1748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5807157-343D-44E9-8E94-77122B2B1748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5807157-343D-44E9-8E94-77122B2B1748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A73B581D-2C31-4ACA-AB07-70312E4FBAE7} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
-		{654F1D08-07CA-40E8-98F0-8F5891C789C6} = {A73B581D-2C31-4ACA-AB07-70312E4FBAE7}
 		{00A2C413-BE66-43C7-AD4F-88078430D265} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
 		{FFC6AEA4-E399-40A6-9250-F5A8576C3439} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
 		{BB87339F-B290-4F85-87C7-053EB20AA496} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
@@ -72,6 +71,7 @@ Global
 		{1C5CBBC2-7DBB-42F5-AD7C-43F29DE1DEBC} = {A1028054-00C6-42E8-BE99-A1DB452DFF30}
 		{27C733F6-8718-4B94-BCE9-00041A000B43} = {00A2C413-BE66-43C7-AD4F-88078430D265}
 		{96D5D5D4-F89B-4053-94B0-8DF788F89E2E} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
+		{A5807157-343D-44E9-8E94-77122B2B1748} = {A73B581D-2C31-4ACA-AB07-70312E4FBAE7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B355BD00-BE85-4A8D-BAF8-E1BDE1515961}

@@ -1,22 +1,21 @@
-﻿using Canducci.MongoDB.Repository.MongoAttribute;
-using MoneyAdmin.Domain.Core.Models;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MoneyAdmin.Domain.Core.Models;
+using System;
 
 namespace MoneyAdmin.Domain
 {
-    [MongoCollectionName("accounts")]
     public class Account : Entity
     {
-        public Account(string name)
+        public Account(string name, decimal initialValue = 0)
         {
+            Id = Guid.NewGuid();
             Name = name;
+            Amount = initialValue;
         }
 
-        [BsonRequired()]
-        [BsonElement("name")]
+        protected Account() { }
+
         public string Name { get; set; }
 
-        [BsonElement("amount")]
         public decimal Amount { get; set; }
     }
 }

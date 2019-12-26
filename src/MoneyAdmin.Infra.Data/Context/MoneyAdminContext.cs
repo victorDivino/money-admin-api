@@ -1,22 +1,22 @@
-﻿using MongoDB.Driver;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
+using MoneyAdmin.Domain;
 
 namespace MoneyAdmin.Infra.Data
 {
-    public class MoneyAdminContext
+    public class MoneyAdminContext : DbContext
     {
-        public IMongoDatabase Database { get; }
-
-        public MoneyAdminContext(MongoClient mongoClient)
+        public MoneyAdminContext()
         {
-            try
-            {
-                Database = mongoClient.GetDatabase("moneyadmin");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Could not connect to server.", ex);
-            }
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlite(@"Data Source='C:\Databases\moneyadmin.db'");
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+        }
+
+        public DbSet<Account> Accounts { get; set; }
     }
 }
