@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace MoneyAdmin.Domain.Core.Commands
 {
@@ -18,6 +19,7 @@ namespace MoneyAdmin.Domain.Core.Commands
         public bool IsSuccess => Exception == null;
 
         public static CommandResult Success() => new CommandResult();
+        public Task<CommandResult> AsTask => Task.FromResult(this);
 
         public static implicit operator bool(CommandResult result) => result.IsSuccess;
 

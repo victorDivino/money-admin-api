@@ -8,8 +8,4 @@
     <ProjectReference Include="..\MoneyAdmin.Domain.Core\MoneyAdmin.Domain.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
-
 </Project>
