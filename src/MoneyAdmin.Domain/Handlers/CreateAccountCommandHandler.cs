@@ -12,10 +12,7 @@ namespace MoneyAdmin.Domain.Handlers
     {
         private readonly IAccountRepository _accountRepository;
 
-        public CreateAccountCommandHandler(IAccountRepository accountRepository)
-        {
-            _accountRepository = accountRepository;
-        }
+        public CreateAccountCommandHandler(IAccountRepository accountRepository) => _accountRepository = accountRepository;
 
         public Task<CommandResult> Handle(CreateAccountCommand command, CancellationToken cancellationToken) => Create(command).AsTask;
 
@@ -32,7 +29,6 @@ namespace MoneyAdmin.Domain.Handlers
             }
             catch (Exception ex)
             {
-
                 return ex;
             }
         }

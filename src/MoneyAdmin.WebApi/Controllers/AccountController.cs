@@ -5,22 +5,21 @@ using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace MoneyAdmin.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AccountController : ControllerBase
+    public class AccountController : CustomController
     {
-        private readonly IMediator _bus;
+        private readonly IMediator _mediator;
         private readonly IAccountRepositoryReadOnly _accountRepositoryReadOnly;
 
-        public AccountController(IMediator bus, IAccountRepositoryReadOnly accountRepositoryReadOnly)
+        public AccountController(IMediator mediator, IAccountRepositoryReadOnly accountRepositoryReadOnly)
+            : base(mediator)
         {
-            _bus = bus;
+            _mediator = mediator;
             _accountRepositoryReadOnly = accountRepositoryReadOnly;
         }
 
@@ -29,7 +28,7 @@ namespace MoneyAdmin.WebApi.Controllers
         {
             try
             {
-                return Ok(_accountRepositoryReadOnly.GetAll().ToList());
+                return Ok(_accountRepositoryReadOnly.GetAll());
             }
             catch (Exception ex)
             {
@@ -39,16 +38,6 @@ namespace MoneyAdmin.WebApi.Controllers
 
         [HttpPost]
         public async Task<ActionResult> Create(CreateAccountCommand createAccountCommand)
-        {
-            try
-            {
-                await _bus.Send(createAccountCommand);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
-        }
+            => await SendCommand(createAccountCommand);
     }
 }
