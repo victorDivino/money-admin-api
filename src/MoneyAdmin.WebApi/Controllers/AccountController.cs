@@ -6,6 +6,7 @@ using MoneyAdmin.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MoneyAdmin.WebApi.Controllers
@@ -46,7 +47,7 @@ namespace MoneyAdmin.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
             }
         }
     }
