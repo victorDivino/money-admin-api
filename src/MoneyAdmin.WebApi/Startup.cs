@@ -26,12 +26,10 @@ namespace MoneyAdmin.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(CreateAccountCommand));
-
             services.AddControllers();
             services.AddDbContext<MoneyAdminContext>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
-
 
             services.AddSwaggerGen(c =>
             {

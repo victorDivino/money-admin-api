@@ -1,9 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MoneyAdmin.Application.ViewModels;
 using MoneyAdmin.Domain;
+using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MoneyAdmin.WebApi.Controllers
 {
@@ -11,12 +14,12 @@ namespace MoneyAdmin.WebApi.Controllers
     [Route("[controller]")]
     public class AccountController : ControllerBase
     {
-        private readonly IAccountRepository _accountRepository;
+        private readonly IMediator _bus;
         private readonly IAccountRepositoryReadOnly _accountRepositoryReadOnly;
 
-        public AccountController(IAccountRepository accountRepository, IAccountRepositoryReadOnly accountRepositoryReadOnly)
+        public AccountController(IMediator bus, IAccountRepositoryReadOnly accountRepositoryReadOnly)
         {
-            _accountRepository = accountRepository;
+            _bus = bus;
             _accountRepositoryReadOnly = accountRepositoryReadOnly;
         }
 
@@ -25,7 +28,7 @@ namespace MoneyAdmin.WebApi.Controllers
         {
             try
             {
-                return Ok(_accountRepositoryReadOnly.GetAll());
+                return Ok(_accountRepositoryReadOnly.GetAll().ToList());
             }
             catch (Exception ex)
             {
@@ -34,14 +37,12 @@ namespace MoneyAdmin.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(AccountViewModel accountViewModel)
+        public async Task<ActionResult> Create(CreateAccountCommand createAccountCommand)
         {
             try
             {
-                var account = new Account(accountViewModel.Name, accountViewModel.InitialValue);
-                _accountRepository.Add(account);
-                _accountRepository.Save();
-                return Ok(account);
+                await _bus.Send(createAccountCommand);
+                return Ok();
             }
             catch (Exception ex)
             {
