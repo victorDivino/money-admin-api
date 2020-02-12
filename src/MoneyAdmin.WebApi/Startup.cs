@@ -25,11 +25,12 @@ namespace MoneyAdmin.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(typeof(CreateAccountCommand));
+
             services.AddControllers();
             services.AddDbContext<MoneyAdminContext>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
-            services.AddMediatR(typeof(CreateAccountCommand));
 
 
             services.AddSwaggerGen(c =>
