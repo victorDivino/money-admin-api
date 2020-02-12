@@ -1,9 +1,11 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Interfaces;
 using MoneyAdmin.Infra.Data;
 using MoneyAdmin.Infra.Data.Repositories;
@@ -27,6 +29,8 @@ namespace MoneyAdmin.WebApi
             services.AddDbContext<MoneyAdminContext>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
+            services.AddMediatR(typeof(CreateAccountCommand));
+
 
             services.AddSwaggerGen(c =>
             {
