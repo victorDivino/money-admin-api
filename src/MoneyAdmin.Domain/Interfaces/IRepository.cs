@@ -1,6 +1,5 @@
-﻿using MoneyAdmin.Domain.Core.Models;
-using System;
-using System.Threading.Tasks;
+﻿using System;
+using MoneyAdmin.Domain.Core.Models;
 
 namespace MoneyAdmin.Domain.Interfaces
 {

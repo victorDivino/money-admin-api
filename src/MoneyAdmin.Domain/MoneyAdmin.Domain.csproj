@@ -5,7 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MoneyAdmin.Application\MoneyAdmin.Application.csproj" />
     <ProjectReference Include="..\MoneyAdmin.Domain.Core\MoneyAdmin.Domain.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
