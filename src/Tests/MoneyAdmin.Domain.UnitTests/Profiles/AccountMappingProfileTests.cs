@@ -26,7 +26,7 @@ namespace MoneyAdmin.Domain.Profiles
             // Action
             var destination = mapper.Map<CreateAccountCommand, Account>(source);
 
-            // Arrange
+            // Assert
             using (new AssertionScope())
             {
                 destination.Name.Should().Be(source.Name);
