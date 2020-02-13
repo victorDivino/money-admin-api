@@ -1,5 +1,4 @@
-﻿using System;
-using MoneyAdmin.Domain.Core.Models;
+﻿using MoneyAdmin.Domain.Core.Models;
 
 namespace MoneyAdmin.Domain
 {
@@ -7,7 +6,6 @@ namespace MoneyAdmin.Domain
     {
         public Account(string name, decimal initialValue = 0)
         {
-            Id = Guid.NewGuid();
             Name = name;
             Amount = initialValue;
         }

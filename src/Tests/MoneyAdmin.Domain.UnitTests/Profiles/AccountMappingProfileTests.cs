@@ -10,7 +10,7 @@ namespace MoneyAdmin.Domain.Profiles
     public sealed class AccountMappingProfileTests
     {
         [TestMethod]
-        public void teste()
+        public void AccountMappingProfileShouldValid()
         {
             // Arrange
             var profile = new AccountMappingProfile();
@@ -29,7 +29,6 @@ namespace MoneyAdmin.Domain.Profiles
             // Arrange
             using (new AssertionScope())
             {
-                destination.Id.Should().Be(source.Id);
                 destination.Name.Should().Be(source.Name);
                 destination.Amount.Should().Be(source.InitialValue);
             }
