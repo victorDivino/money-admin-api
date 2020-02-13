@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using MoneyAdmin.Domain.Commands;
 
-namespace MoneyAdmin.Domain.AutoMapper
+namespace MoneyAdmin.Domain.Profiles
 {
-    public sealed class AccountCommandMappingProfile : Profile
+    public class AccountMappingProfile : Profile
     {
-        public AccountCommandMappingProfile()
+        public AccountMappingProfile()
         {
             CreateMap<CreateAccountCommand, Account>()
                 .ForMember(dest => dest.Amount, m => m.MapFrom(a => a.InitialValue));
