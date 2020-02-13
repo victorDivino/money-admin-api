@@ -11,10 +11,9 @@ namespace MoneyAdmin.Infra.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite(@"Data Source='C:\Databases\moneyadmin.db'");
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
         }
 
         public DbSet<Account> Accounts { get; set; }

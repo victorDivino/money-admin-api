@@ -1,9 +1,9 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using MoneyAdmin.Domain.Core.Commands;
-using System;
+﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using MoneyAdmin.Domain.Core.Commands;
 
 namespace MoneyAdmin.WebApi.Controllers
 {

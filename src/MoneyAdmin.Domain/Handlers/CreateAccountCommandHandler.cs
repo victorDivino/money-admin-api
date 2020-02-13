@@ -1,10 +1,10 @@
-﻿using MediatR;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Core.Commands;
 using MoneyAdmin.Domain.Interfaces;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MoneyAdmin.Domain.Handlers
 {

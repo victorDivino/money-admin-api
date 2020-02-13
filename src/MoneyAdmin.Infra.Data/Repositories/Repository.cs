@@ -1,7 +1,7 @@
-﻿using MoneyAdmin.Domain.Core.Models;
-using MoneyAdmin.Domain.Interfaces;
-using System;
+﻿using System;
 using System.Linq;
+using MoneyAdmin.Domain.Core.Models;
+using MoneyAdmin.Domain.Interfaces;
 
 namespace MoneyAdmin.Infra.Data.Repositories
 {
