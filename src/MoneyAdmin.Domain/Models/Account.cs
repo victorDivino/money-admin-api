@@ -1,5 +1,5 @@
-﻿using MoneyAdmin.Domain.Core.Models;
-using System;
+﻿using System;
+using MoneyAdmin.Domain.Core.Models;
 
 namespace MoneyAdmin.Domain
 {
