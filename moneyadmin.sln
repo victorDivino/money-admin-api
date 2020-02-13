@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.Domain.UnitTests", "src\Tests\MoneyAdmin.Domain.UnitTests\MoneyAdmin.Domain.UnitTests.csproj", "{886C722C-0CF0-4851-9438-E894F220FDBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.WebApi.Test", "src\MoneyAdmin.WebApi.Test\MoneyAdmin.WebApi.Test.csproj", "{ED26CAA2-71B3-42C6-9603-0FBD958571A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,7 @@ Global
 		{A5807157-343D-44E9-8E94-77122B2B1748} = {A73B581D-2C31-4ACA-AB07-70312E4FBAE7}
 		{4061DB77-6E88-4756-B75F-E7CA6662EA2A} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
 		{886C722C-0CF0-4851-9438-E894F220FDBB} = {4061DB77-6E88-4756-B75F-E7CA6662EA2A}
+		{ED26CAA2-71B3-42C6-9603-0FBD958571A1} = {A73B581D-2C31-4ACA-AB07-70312E4FBAE7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B355BD00-BE85-4A8D-BAF8-E1BDE1515961}
