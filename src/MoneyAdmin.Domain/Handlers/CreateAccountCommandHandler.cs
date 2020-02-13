@@ -26,9 +26,9 @@ namespace MoneyAdmin.Domain.Handlers
         {
             try
             {
-                var commandResult = _mapper.Map<Account>(command);
+                var account = _mapper.Map<Account>(command);
 
-                _accountRepository.Add(commandResult);
+                _accountRepository.Add(account);
                 _accountRepository.Save();
 
                 return CommandResult.Success();
