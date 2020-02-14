@@ -1,5 +1,4 @@
-﻿using System;
-using MoneyAdmin.Domain.Core.Commands;
+﻿using MoneyAdmin.Domain.Core.Commands;
 
 namespace MoneyAdmin.Domain.Commands
 {
