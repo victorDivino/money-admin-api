@@ -1,3 +1,5 @@
+using System;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,9 +9,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Interfaces;
+using MoneyAdmin.Domain.Profiles;
 using MoneyAdmin.Infra.Data;
 using MoneyAdmin.Infra.Data.Repositories;
-using System;
 
 namespace MoneyAdmin.WebApi
 {
@@ -25,6 +27,7 @@ namespace MoneyAdmin.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(AccountMappingProfile));
             services.AddMediatR(typeof(CreateAccountCommand));
             services.AddControllers();
             services.AddDbContext<MoneyAdminContext>();

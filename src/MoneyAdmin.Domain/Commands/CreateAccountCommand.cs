@@ -7,10 +7,7 @@ namespace MoneyAdmin.Domain.Commands
     {
         public CreateAccountCommand()
         {
-            Id = Guid.NewGuid();
         }
-
-        public Guid Id { get; protected set; }
 
         public string Name { get; set; }
 
