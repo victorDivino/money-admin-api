@@ -1,18 +1,17 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using FluentAssertions.Execution;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MoneyAdmin.Domain.Validators;
+using MoneyAdmin.Domain.Commands;
 
-namespace MoneyAdmin.Domain.Commands
+namespace MoneyAdmin.Domain.Validators
 {
     [TestClass]
-    public sealed class CreateAccountCommandTests
+    public sealed class CreateAccountCommandValidatorTests
     {
         private readonly CreateAccountCommandValidator _validator;
         private readonly CreateAccountCommand _command;
 
-        public CreateAccountCommandTests()
+        public CreateAccountCommandValidatorTests()
         {
             var validator = new CreateAccountCommandValidator();
             var command = new CreateAccountCommand();
@@ -21,11 +20,10 @@ namespace MoneyAdmin.Domain.Commands
         }
 
         [TestMethod]
-        public void CreateAccountShouldValid()
+        public void CreateAccountCommandValidatorShouldBeTrue()
         {
             // Arrange
             _command.Name = "NuConta";
-            _command.InitialValue = 0;
 
             // Action
             var validation = _validator.Validate(_command);
@@ -34,22 +32,21 @@ namespace MoneyAdmin.Domain.Commands
             validation.IsValid.Should().BeTrue();
         }
 
-        [TestMethod]
-        public void CreateAccountWithNameEmptyOrInitialValueLowerZeroShouldInvalid()
+
+        [DataTestMethod]
+        [DataRow(61)]
+        [DataRow(2)]
+        [DataRow(0)]
+        public void CreateAccountCommandValidatorWithInvalidNameShouldError(int nameLegth)
         {
             // Arrange
-            _command.Name = "";
-            _command.InitialValue = -1;
+            _command.Name = new string('a', nameLegth);
 
             // Action
             var validation = _validator.Validate(_command);
 
             // Assert
-            using (new AssertionScope())
-            {
-                validation.Errors.ElementAt(0).ErrorMessage.Should().Be("is required");
-                validation.Errors.ElementAt(1).ErrorMessage.Should().Be("should be lower or equals than 0");
-            }
+            validation.Errors.Single().ErrorMessage.Should().Be("The name must be greater than 2 less than 60");
         }
     }
 }

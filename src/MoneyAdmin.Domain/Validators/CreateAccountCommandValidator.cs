@@ -7,8 +7,7 @@ namespace MoneyAdmin.Domain.Validators
     {
         public CreateAccountCommandValidator()
         {
-            RuleFor(x => x.Name).NotNull().NotEmpty().WithMessage("is required");
-            RuleFor(x => x.InitialValue).GreaterThanOrEqualTo(0).WithMessage("should be lower or equals than 0");
+            RuleFor(x => x.Name).Length(3, 60).WithMessage("The name must be greater than 2 less than 60");
         }
     }
 }
