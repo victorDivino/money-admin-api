@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.Application", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{96D5D5D4-F89B-4053-94B0-8DF788F89E2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.WebApi", "src\MoneyAdmin.WebApi\MoneyAdmin.WebApi.csproj", "{A5807157-343D-44E9-8E94-77122B2B1748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.WebApi", "src\MoneyAdmin.WebApi\MoneyAdmin.WebApi.csproj", "{A5807157-343D-44E9-8E94-77122B2B1748}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{4061DB77-6E88-4756-B75F-E7CA6662EA2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.Domain.UnitTests", "src\Tests\MoneyAdmin.Domain.UnitTests\MoneyAdmin.Domain.UnitTests.csproj", "{886C722C-0CF0-4851-9438-E894F220FDBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{A5807157-343D-44E9-8E94-77122B2B1748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5807157-343D-44E9-8E94-77122B2B1748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5807157-343D-44E9-8E94-77122B2B1748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{886C722C-0CF0-4851-9438-E894F220FDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886C722C-0CF0-4851-9438-E894F220FDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886C722C-0CF0-4851-9438-E894F220FDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886C722C-0CF0-4851-9438-E894F220FDBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +80,8 @@ Global
 		{27C733F6-8718-4B94-BCE9-00041A000B43} = {00A2C413-BE66-43C7-AD4F-88078430D265}
 		{96D5D5D4-F89B-4053-94B0-8DF788F89E2E} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
 		{A5807157-343D-44E9-8E94-77122B2B1748} = {A73B581D-2C31-4ACA-AB07-70312E4FBAE7}
+		{4061DB77-6E88-4756-B75F-E7CA6662EA2A} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
+		{886C722C-0CF0-4851-9438-E894F220FDBB} = {4061DB77-6E88-4756-B75F-E7CA6662EA2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B355BD00-BE85-4A8D-BAF8-E1BDE1515961}
