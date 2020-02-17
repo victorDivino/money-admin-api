@@ -1,5 +1,6 @@
 using System;
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Interfaces;
 using MoneyAdmin.Domain.Profiles;
+using MoneyAdmin.Domain.Validators;
 using MoneyAdmin.Infra.Data;
 using MoneyAdmin.Infra.Data.Repositories;
 
@@ -33,6 +35,8 @@ namespace MoneyAdmin.WebApi
             services.AddDbContext<MoneyAdminContext>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
+            services.AddMvc().AddFluentValidation(fvc =>
+                fvc.RegisterValidatorsFromAssemblyContaining<CreateAccountCommandValidator>());
 
             services.AddSwaggerGen(c =>
             {
