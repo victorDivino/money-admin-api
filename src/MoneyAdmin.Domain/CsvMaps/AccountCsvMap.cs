@@ -1,10 +1,6 @@
 ﻿using CsvHelper.Configuration;
-using MoneyAdmin.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MoneyAdmin.WebApi.CsvMaps
+namespace MoneyAdmin.Domain.CsvMaps
 {
     public class AccountCsvMap : ClassMap<Account>
     {
