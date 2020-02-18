@@ -9,8 +9,10 @@ namespace MoneyAdmin.Domain.Commands
         public void CreateAccountWithNameValidShouldTrue()
         {
             // Arrange
-            var command = new CreateAccountCommand();
-            command.Name = "NuConta";
+            var command = new CreateAccountCommand
+            {
+                Name = "NuConta"
+            };
 
             // Action
             var result = command.IsValid;
@@ -25,8 +27,10 @@ namespace MoneyAdmin.Domain.Commands
         public void CreateAccountWithNameInvalidShouldFalse(int nameLegth)
         {
             // Arrange
-            var command = new CreateAccountCommand();
-            command.Name = new string('a', nameLegth);
+            var command = new CreateAccountCommand
+            {
+                Name = new string('a', nameLegth)
+            };
 
             // Action
             var result = command.IsValid;
