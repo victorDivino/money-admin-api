@@ -16,7 +16,6 @@ namespace MoneyAdmin.Domain.Handlers
         private readonly IMapper _mapper;
         private readonly IAccountRepository _accountRepository;
 
-
         public CreateAccountCommandHandlerTests()
         {
             _mapper = Substitute.For<IMapper>();
