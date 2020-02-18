@@ -1,17 +1,15 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Globalization;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
 using CsvHelper;
 using MediatR;
 using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Core.Commands;
-using MoneyAdmin.Domain.Interfaces;
 using MoneyAdmin.Domain.CsvMaps;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using MoneyAdmin.Domain.Interfaces;
 
 namespace MoneyAdmin.Domain.Handlers
 {
@@ -33,7 +31,7 @@ namespace MoneyAdmin.Domain.Handlers
             try
             {
                 if (!command.IsValid)
-                    throw new NullReferenceException();
+                    throw new Exception("The file must not be null");
 
                 using (var reader = new StreamReader(command.File))
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -41,10 +39,7 @@ namespace MoneyAdmin.Domain.Handlers
                     csv.Configuration.RegisterClassMap<AccountCsvMap>();
                     var accounts = csv.GetRecords<Account>();
 
-                    foreach (var account in accounts)
-                    {
-                        _accountRepository.Add(account);
-                    }
+                    _accountRepository.AddRange(accounts);
                     _accountRepository.Save();
                 }
 

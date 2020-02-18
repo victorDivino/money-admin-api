@@ -7,7 +7,7 @@ namespace MoneyAdmin.Domain.Validators
     {
         public CreateAccountBatchCommandValidator()
         {
-            RuleFor(c => c.File).NotNull().WithMessage("The input stream is null");
+            RuleFor(c => c.File).NotNull().WithMessage("The file must not be null");
         }
     }
 }

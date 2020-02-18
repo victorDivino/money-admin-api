@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MoneyAdmin.Domain\MoneyAdmin.Domain.csproj" />
     <ProjectReference Include="..\MoneyAdmin.WebApi\MoneyAdmin.WebApi.csproj" />
   </ItemGroup>
 

@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.Domain.UnitTests", "src\Tests\MoneyAdmin.Domain.UnitTests\MoneyAdmin.Domain.UnitTests.csproj", "{886C722C-0CF0-4851-9438-E894F220FDBB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyAdmin.WebApi.Test", "src\MoneyAdmin.WebApi.Test\MoneyAdmin.WebApi.Test.csproj", "{ED26CAA2-71B3-42C6-9603-0FBD958571A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyAdmin.WebApi.UnitTests", "src\MoneyAdmin.WebApi.UnitTests\MoneyAdmin.WebApi.UnitTests.csproj", "{FDB52BF7-9D3F-4058-9DD3-BCF53C3F28CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,10 @@ Global
 		{886C722C-0CF0-4851-9438-E894F220FDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{886C722C-0CF0-4851-9438-E894F220FDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{886C722C-0CF0-4851-9438-E894F220FDBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED26CAA2-71B3-42C6-9603-0FBD958571A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED26CAA2-71B3-42C6-9603-0FBD958571A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED26CAA2-71B3-42C6-9603-0FBD958571A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED26CAA2-71B3-42C6-9603-0FBD958571A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB52BF7-9D3F-4058-9DD3-BCF53C3F28CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB52BF7-9D3F-4058-9DD3-BCF53C3F28CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB52BF7-9D3F-4058-9DD3-BCF53C3F28CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB52BF7-9D3F-4058-9DD3-BCF53C3F28CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,7 +88,7 @@ Global
 		{A5807157-343D-44E9-8E94-77122B2B1748} = {A73B581D-2C31-4ACA-AB07-70312E4FBAE7}
 		{4061DB77-6E88-4756-B75F-E7CA6662EA2A} = {88FC1711-68E8-4EE6-87D4-74E219FC07D8}
 		{886C722C-0CF0-4851-9438-E894F220FDBB} = {4061DB77-6E88-4756-B75F-E7CA6662EA2A}
-		{ED26CAA2-71B3-42C6-9603-0FBD958571A1} = {4061DB77-6E88-4756-B75F-E7CA6662EA2A}
+		{FDB52BF7-9D3F-4058-9DD3-BCF53C3F28CC} = {4061DB77-6E88-4756-B75F-E7CA6662EA2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B355BD00-BE85-4A8D-BAF8-E1BDE1515961}

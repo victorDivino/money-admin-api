@@ -1,6 +1,6 @@
-﻿using MoneyAdmin.Domain.Core.Commands;
+﻿using System.IO;
+using MoneyAdmin.Domain.Core.Commands;
 using MoneyAdmin.Domain.Validators;
-using System.IO;
 
 namespace MoneyAdmin.Domain.Commands
 {

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +7,6 @@ using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Core.Commands;
 using MoneyAdmin.Domain.Interfaces;
 using NSubstitute;
-using System.Threading.Tasks;
 
 namespace MoneyAdmin.WebApi.Controllers
 {

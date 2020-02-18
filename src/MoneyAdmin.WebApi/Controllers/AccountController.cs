@@ -1,12 +1,12 @@
-﻿using MediatR;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoneyAdmin.Domain;
 using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MoneyAdmin.WebApi.Controllers
 {
@@ -41,17 +41,13 @@ namespace MoneyAdmin.WebApi.Controllers
         public async Task<ActionResult> Create(CreateAccountCommand createAccountCommand)
             => await SendCommand(createAccountCommand);
 
-
-        [HttpPost("uploadcsv")]
+        [HttpPost("batch")]
         public async Task<ActionResult> PostFile(IFormFile file)
         {
             if (file == null)
-            {
                 return BadRequest();
-            }
 
             var createAccountBatchCommand = new CreateAccountBatchCommand(file.OpenReadStream());
-
             return await SendCommand(createAccountBatchCommand);
         }
     }
