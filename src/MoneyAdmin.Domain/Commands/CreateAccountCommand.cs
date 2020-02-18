@@ -1,4 +1,5 @@
 ﻿using MoneyAdmin.Domain.Core.Commands;
+using MoneyAdmin.Domain.Validators;
 
 namespace MoneyAdmin.Domain.Commands
 {
@@ -11,5 +12,15 @@ namespace MoneyAdmin.Domain.Commands
         public string Name { get; set; }
 
         public decimal InitialValue { get; set; }
+
+        public bool IsValid
+        {
+            get
+            {
+                var validator = new CreateAccountCommandValidator();
+                var validation = validator.Validate(this);
+                return validation.IsValid;
+            }
+        }
     }
 }
