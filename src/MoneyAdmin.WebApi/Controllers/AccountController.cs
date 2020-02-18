@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoneyAdmin.Domain;
 using MoneyAdmin.Domain.Commands;
@@ -39,5 +40,15 @@ namespace MoneyAdmin.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(CreateAccountCommand createAccountCommand)
             => await SendCommand(createAccountCommand);
+
+        [HttpPost("batch")]
+        public async Task<ActionResult> PostFile(IFormFile file)
+        {
+            if (file == null)
+                return BadRequest();
+
+            var createAccountBatchCommand = new CreateAccountBatchCommand(file.OpenReadStream());
+            return await SendCommand(createAccountBatchCommand);
+        }
     }
 }
