@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MoneyAdmin.Domain.Commands
 {
     [TestClass]
-    public class CreateAccountCommandTests
+    public sealed class CreateAccountCommandTests
     {
         [TestMethod]
         public void CreateAccountWithNameValidShouldTrue()
@@ -14,16 +15,14 @@ namespace MoneyAdmin.Domain.Commands
                 Name = "NuConta"
             };
 
-            // Action
-            var result = command.IsValid;
-
             // Assert
-            Assert.IsTrue(result);
+            command.IsValid.Should().BeTrue();
         }
 
         [DataTestMethod]
         [DataRow(61)]
         [DataRow(2)]
+        [DataRow(0)]
         public void CreateAccountWithNameInvalidShouldFalse(int nameLegth)
         {
             // Arrange
@@ -32,11 +31,21 @@ namespace MoneyAdmin.Domain.Commands
                 Name = new string('a', nameLegth)
             };
 
-            // Action
-            var result = command.IsValid;
+            // Assert
+            command.IsValid.Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void CreateAccountWithNameNullShouldFalse()
+        {
+            // Arrange
+            var command = new CreateAccountCommand
+            {
+                Name = null
+            };
 
             // Assert
-            Assert.IsFalse(result);
+            command.IsValid.Should().BeFalse();
         }
     }
 }
