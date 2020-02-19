@@ -11,12 +11,12 @@ namespace MoneyAdmin.Domain.Handlers
 {
     public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, CommandResult>
     {
-        private readonly IAccountRepository _accountRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateAccountCommandHandler(IAccountRepository accountRepository, IMapper mapper)
+        public CreateAccountCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _accountRepository = accountRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
@@ -31,8 +31,7 @@ namespace MoneyAdmin.Domain.Handlers
 
                 var account = _mapper.Map<Account>(command);
 
-                _accountRepository.Add(account);
-                _accountRepository.Save();
+                _unitOfWork.AccountRepository.Add(account);
 
                 return CommandResult.Success();
             }

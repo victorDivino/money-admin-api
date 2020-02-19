@@ -14,13 +14,13 @@ namespace MoneyAdmin.Domain.Handlers
     {
         private readonly CreateAccountCommandHandler _sut;
         private readonly IMapper _mapper;
-        private readonly IAccountRepository _accountRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public CreateAccountCommandHandlerTests()
         {
             _mapper = Substitute.For<IMapper>();
-            _accountRepository = Substitute.For<IAccountRepository>();
-            _sut = new CreateAccountCommandHandler(_accountRepository, _mapper);
+            _unitOfWork = Substitute.For<IUnitOfWork>();
+            _sut = new CreateAccountCommandHandler(_unitOfWork, _mapper);
         }
 
         [TestMethod]
