@@ -14,6 +14,7 @@ using MoneyAdmin.Domain.Profiles;
 using MoneyAdmin.Domain.Validators;
 using MoneyAdmin.Infra.Data;
 using MoneyAdmin.Infra.Data.Repositories;
+using MoneyAdmin.Infra.Data.UnitOfWork;
 
 namespace MoneyAdmin.WebApi
 {
@@ -33,6 +34,7 @@ namespace MoneyAdmin.WebApi
             services.AddMediatR(typeof(CreateAccountCommand));
             services.AddControllers();
             services.AddDbContext<MoneyAdminContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
             services.AddMvc().AddFluentValidation(fvc =>
