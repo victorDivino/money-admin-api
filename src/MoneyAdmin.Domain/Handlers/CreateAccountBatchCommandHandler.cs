@@ -12,7 +12,7 @@ using MoneyAdmin.Domain.Interfaces;
 
 namespace MoneyAdmin.Domain.Handlers
 {
-    class CreateAccountBatchCommandHandler : IRequestHandler<CreateAccountBatchCommand, CommandResult>
+    public class CreateAccountBatchCommandHandler : IRequestHandler<CreateAccountBatchCommand, CommandResult>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -28,13 +28,16 @@ namespace MoneyAdmin.Domain.Handlers
             try
             {
                 if (!command.IsValid)
-                    throw new Exception("The file must not be null");
+                    return new Exception("Invalid command");
 
                 using (var reader = new StreamReader(command.File))
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
                     csv.Configuration.RegisterClassMap<AccountCsvMap>();
                     var accounts = csv.GetRecords<Account>();
+
+                    if (accounts == null)
+                        return new Exception("Cvs file is empty");
 
                     _unitOfWork.AccountRepository.AddRange(accounts);
                 }

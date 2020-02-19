@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,19 +36,17 @@ namespace MoneyAdmin.WebApi.Controllers
             var result = await _sut.PostFile(file);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(OkResult));
+            result.Should().BeOfType(typeof(OkResult));
         }
 
         [TestMethod]
         public async Task ShouldReturnBadRequestResultToPostFileMethod()
         {
-            // Arrange
-
             // Action
             var result = await _sut.PostFile(null);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(BadRequestResult));
+            result.Should().BeOfType(typeof(BadRequestObjectResult));
         }
     }
 }

@@ -9,6 +9,7 @@ namespace MoneyAdmin.Domain.Validators
         {
             RuleFor(x => x.Name)
                 .NotNull().WithMessage("The Name is required")
+                .NotEmpty().WithMessage("The Name is required")
                 .Length(3, 60).WithMessage("The Name must be greater than 2 less than 60");
         }
     }
