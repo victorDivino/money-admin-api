@@ -3,7 +3,6 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using CsvHelper;
 using MediatR;
 using MoneyAdmin.Domain.Commands;
@@ -15,13 +14,11 @@ namespace MoneyAdmin.Domain.Handlers
 {
     class CreateAccountBatchCommandHandler : IRequestHandler<CreateAccountBatchCommand, CommandResult>
     {
-        private readonly IAccountRepository _accountRepository;
-        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CreateAccountBatchCommandHandler(IAccountRepository accountRepository, IMapper mapper)
+        public CreateAccountBatchCommandHandler(IUnitOfWork unitOfWork)
         {
-            _accountRepository = accountRepository;
-            _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
 
         public Task<CommandResult> Handle(CreateAccountBatchCommand request, CancellationToken cancellationToken) => Create(request).AsTask;
@@ -39,8 +36,7 @@ namespace MoneyAdmin.Domain.Handlers
                     csv.Configuration.RegisterClassMap<AccountCsvMap>();
                     var accounts = csv.GetRecords<Account>();
 
-                    _accountRepository.AddRange(accounts);
-                    _accountRepository.Save();
+                    _unitOfWork.AccountRepository.AddRange(accounts);
                 }
 
                 return CommandResult.Success();
