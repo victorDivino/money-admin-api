@@ -13,7 +13,7 @@ namespace MoneyAdmin.Domain.Commands
 
         public Stream File { get; private set; }
 
-        public bool IsValid
+        public override bool IsValid
         {
             get
             {

@@ -13,7 +13,7 @@ namespace MoneyAdmin.Domain.Commands
 
         public decimal InitialValue { get; set; }
 
-        public bool IsValid
+        public override bool IsValid
         {
             get
             {
