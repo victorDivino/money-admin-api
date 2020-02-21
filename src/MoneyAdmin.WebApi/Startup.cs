@@ -11,7 +11,6 @@ using Microsoft.OpenApi.Models;
 using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Interfaces;
 using MoneyAdmin.Domain.Profiles;
-using MoneyAdmin.Domain.Validators;
 using MoneyAdmin.Infra.Data;
 using MoneyAdmin.Infra.Data.Repositories;
 using MoneyAdmin.Infra.Data.UnitOfWork;
@@ -37,8 +36,7 @@ namespace MoneyAdmin.WebApi
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
-            services.AddMvc().AddFluentValidation(fvc =>
-                fvc.RegisterValidatorsFromAssemblyContaining<CreateAccountCommandValidator>());
+            services.AddMvc().AddFluentValidation();
 
             services.AddSwaggerGen(c =>
             {

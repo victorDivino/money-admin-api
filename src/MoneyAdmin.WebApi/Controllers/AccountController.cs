@@ -45,7 +45,7 @@ namespace MoneyAdmin.WebApi.Controllers
         public async Task<ActionResult> PostFile(IFormFile file)
         {
             if (file == null)
-                return BadRequest();
+                return BadRequest("The file is required");
 
             var createAccountBatchCommand = new CreateAccountBatchCommand(file.OpenReadStream());
             return await SendCommand(createAccountBatchCommand);

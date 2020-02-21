@@ -23,7 +23,7 @@ namespace MoneyAdmin.WebApi.Controllers
                 var commandResult = await _mediator.Send(command);
 
                 if (!commandResult)
-                    return StatusCode((int)HttpStatusCode.BadRequest);
+                    return StatusCode((int)HttpStatusCode.BadRequest, commandResult.Exception);
 
                 return Ok();
             }

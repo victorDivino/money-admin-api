@@ -7,7 +7,11 @@ namespace MoneyAdmin.Domain.Validators
     {
         public CreateAccountBatchCommandValidator()
         {
-            RuleFor(c => c.File).NotNull().WithMessage("The file must not be null");
+            When(c => c.File != null, () =>
+            {
+                RuleFor(c => c.File.Length)
+                    .NotEqual(0).WithMessage("The file must not be empty");
+            });
         }
     }
 }

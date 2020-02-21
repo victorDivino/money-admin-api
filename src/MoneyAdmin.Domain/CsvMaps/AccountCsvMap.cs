@@ -13,7 +13,8 @@ namespace MoneyAdmin.Domain.CsvMaps
                     !(field.Length < 2) &&
                     !(field.Length > 60));
 
-            Map(m => m.Amount).Name("Amount");
+            Map(m => m.Amount)
+                .Name("Amount");
         }
     }
 }
