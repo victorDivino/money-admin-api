@@ -25,9 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MoneyAdmin.Application\MoneyAdmin.Application.csproj" />
     <ProjectReference Include="..\MoneyAdmin.Domain\MoneyAdmin.Domain.csproj" />
     <ProjectReference Include="..\MoneyAdmin.Infra.Data\MoneyAdmin.Infra.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

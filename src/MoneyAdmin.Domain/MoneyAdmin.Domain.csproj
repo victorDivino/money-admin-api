@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MoneyAdmin.Application\MoneyAdmin.Application.csproj" />
     <ProjectReference Include="..\MoneyAdmin.Domain.Core\MoneyAdmin.Domain.Core.csproj" />
   </ItemGroup>
 
