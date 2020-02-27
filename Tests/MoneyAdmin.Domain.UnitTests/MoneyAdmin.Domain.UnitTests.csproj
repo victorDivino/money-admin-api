@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MoneyAdmin.Domain\MoneyAdmin.Domain.csproj" />
+    <ProjectReference Include="..\..\src\MoneyAdmin.Domain\MoneyAdmin.Domain.csproj" />
   </ItemGroup>
 
 </Project>

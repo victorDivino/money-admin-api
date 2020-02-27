@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MoneyAdmin.WebApi\MoneyAdmin.WebApi.csproj" />
+    <ProjectReference Include="..\..\src\MoneyAdmin.WebApi\MoneyAdmin.WebApi.csproj" />
   </ItemGroup>
 
 </Project>
