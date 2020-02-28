@@ -3,7 +3,7 @@ using MoneyAdmin.Domain.Core.Models;
 
 namespace MoneyAdmin.Domain
 {
-    public class Account : Entity
+    public sealed class Account : Entity
     {
         public Account(string name, decimal initialValue = 0)
         {
@@ -12,7 +12,7 @@ namespace MoneyAdmin.Domain
             Amount = initialValue;
         }
 
-        protected Account() { }
+        private Account() { }
 
         public string Name { get; set; }
 
