@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MoneyAdmin.Domain.Models
 {
-    public sealed class Expense : Transaction
+    public sealed class Expense : BaseAccount
     {
-        public Expense(string name, string details, DateTime dueDate, Category category, Account account)
-            : base(name, details, dueDate, category, account) { }
+        public Guid CategoryId { get; private set; }
+        public ExpenseCategory Category { get; private set; }
+        public ICollection<ExpensePayment> Payments { get; private set; }
 
-        public override void SetPayment(decimal value) =>
-            Account.Amount -= value;
+        public Expense(string name, decimal amount, string details, short payDay, Guid bankAccountId)
+            : base(name, amount, details, payDay, bankAccountId)
+        {
+        }
     }
 }

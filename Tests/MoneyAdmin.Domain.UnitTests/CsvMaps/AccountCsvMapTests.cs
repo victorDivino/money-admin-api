@@ -52,7 +52,7 @@ namespace MoneyAdmin.Domain.CsvMaps
             using var reader = new StreamReader(stream);
             using var sut = new CsvReader(reader, CultureInfo.InvariantCulture);
             sut.Configuration.RegisterClassMap<AccountCsvMap>();
-            sut.GetRecords<Account>().ToList();
+            sut.GetRecords<BankAccount>().ToList();
         }
     }
 }

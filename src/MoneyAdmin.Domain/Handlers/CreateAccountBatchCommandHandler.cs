@@ -34,7 +34,7 @@ namespace MoneyAdmin.Domain.Handlers
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
                     csv.Configuration.RegisterClassMap<AccountCsvMap>();
-                    var accounts = csv.GetRecords<Account>();
+                    var accounts = csv.GetRecords<BankAccount>();
 
                     if (accounts == null)
                         return new Exception("Cvs file is empty");

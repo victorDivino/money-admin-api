@@ -2,7 +2,7 @@
 
 namespace MoneyAdmin.Domain.CsvMaps
 {
-    public class AccountCsvMap : ClassMap<Account>
+    public class AccountCsvMap : ClassMap<BankAccount>
     {
         public AccountCsvMap()
         {
@@ -13,7 +13,7 @@ namespace MoneyAdmin.Domain.CsvMaps
                     !(field.Length < 2) &&
                     !(field.Length > 60));
 
-            Map(m => m.Amount)
+            Map(m => m.Balance)
                 .Name("Amount");
         }
     }

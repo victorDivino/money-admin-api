@@ -24,13 +24,13 @@ namespace MoneyAdmin.Domain.Profiles
             };
 
             // Action
-            var destination = mapper.Map<CreateAccountCommand, Account>(source);
+            var destination = mapper.Map<CreateAccountCommand, BankAccount>(source);
 
             // Assert
             using (new AssertionScope())
             {
                 destination.Name.Should().Be(source.Name);
-                destination.Amount.Should().Be(source.InitialValue);
+                destination.Balance.Should().Be(source.InitialValue);
             }
         }
     }

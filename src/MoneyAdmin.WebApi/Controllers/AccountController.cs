@@ -25,7 +25,7 @@ namespace MoneyAdmin.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Account>> Get()
+        public ActionResult<IEnumerable<BankAccount>> Get()
         {
             try
             {

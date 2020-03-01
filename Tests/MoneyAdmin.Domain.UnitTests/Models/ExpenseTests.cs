@@ -8,13 +8,13 @@ namespace MoneyAdmin.Domain.Models
     public sealed class ExpenseTests
     {
         [TestMethod]
-        public void Test()
+        public void ToPayASimpleExpenseShouldToDebtTheBankAccount()
         {
-            var account = new Account("Nubank", 100);
-            var expense = new Expense("Luz", "", DateTime.Now, null, account);
-            var payment = new Payment(50, DateTime.Now, true, expense);
-
-            account.Amount.Should().Be(50);
+            var banckAccount = new BankAccount("Nubank", 100);
+            var expense = new Expense("Enel", 50, "", 5, banckAccount);
+            var payment = new Payment(20, DateTime.Now);
+            expense.ToPay(payment);
+            banckAccount.Balance.Should().Be(50);
         }
     }
 }
