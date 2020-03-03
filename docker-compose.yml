@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+    db:
+        build: ./
+        container_name: mssql-server-container
+        environment:
+            ACCEPT_EULA: Y
+            SA_PASSWORD: MoneyAdmin@123
+            MSSQL_PID: Express
+        ports:
+            - "1433:1433"
