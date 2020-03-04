@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoneyAdmin.Domain;
@@ -14,13 +15,11 @@ namespace MoneyAdmin.WebApi.Controllers
     [Route("[controller]")]
     public class AccountController : CustomController
     {
-        private readonly IMediator _mediator;
         private readonly IAccountRepositoryReadOnly _accountRepositoryReadOnly;
 
         public AccountController(IMediator mediator, IAccountRepositoryReadOnly accountRepositoryReadOnly)
             : base(mediator)
         {
-            _mediator = mediator;
             _accountRepositoryReadOnly = accountRepositoryReadOnly;
         }
 
@@ -38,6 +37,8 @@ namespace MoneyAdmin.WebApi.Controllers
         }
 
         [HttpPost]
+        [Route("register")]
+        [Authorize(Roles = "user")]
         public async Task<ActionResult> Create(CreateAccountCommand createAccountCommand)
             => await SendCommand(createAccountCommand);
 
