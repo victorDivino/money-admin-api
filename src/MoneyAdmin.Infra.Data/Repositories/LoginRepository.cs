@@ -10,7 +10,7 @@ namespace MoneyAdmin.Infra.Data.Repositories
         {
             var users = new List<Login>
             {
-                new Login { UserName = "moneyadmin", PassWord = "1234", Role = "user" }
+                new Login { Id = 1, UserName = "moneyadmin", PassWord = "1234", Role = "user" }
             };
             return users.Where(u => u.UserName.ToLower() == userName.ToLower() && u.PassWord == password).FirstOrDefault();
         }

@@ -18,8 +18,6 @@ using MoneyAdmin.Infra.Data;
 using MoneyAdmin.Infra.Data.Repositories;
 using MoneyAdmin.Infra.Data.UnitOfWork;
 
-
-
 namespace MoneyAdmin.WebApi
 {
     public class Startup
