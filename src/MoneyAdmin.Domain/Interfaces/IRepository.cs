@@ -9,6 +9,5 @@ namespace MoneyAdmin.Domain.Interfaces
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);
         T GetById(Guid id);
-        void Save();
     }
 }

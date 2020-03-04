@@ -29,7 +29,7 @@ namespace MoneyAdmin.Domain.Handlers
                 if (!command.IsValid)
                     return new Exception("Name Invalid");
 
-                var account = _mapper.Map<Account>(command);
+                var account = _mapper.Map<BankAccount>(command);
 
                 _unitOfWork.AccountRepository.Add(account);
 
