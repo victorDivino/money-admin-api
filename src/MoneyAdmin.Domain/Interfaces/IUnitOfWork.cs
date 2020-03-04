@@ -5,6 +5,8 @@ namespace MoneyAdmin.Domain.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IAccountRepository AccountRepository { get; }
+        IExpenseRepository ExpenseRepository { get; }
+
         int Commit();
     }
 }

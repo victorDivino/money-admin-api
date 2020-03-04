@@ -11,13 +11,11 @@ namespace MoneyAdmin.Domain.Handlers
 {
     public sealed class CreateExpenseCommandHandler : IRequestHandler<CreateExpenseCommand, CommandResult>
     {
-        private readonly IAccountRepository _accountRepository;
-        private readonly IExpenseRepository _expenseRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CreateExpenseCommandHandler(IAccountRepository accountRepository, IExpenseRepository expenseRepository)
+        public CreateExpenseCommandHandler(IUnitOfWork unitOfWork)
         {
-            _accountRepository = accountRepository;
-            _expenseRepository = expenseRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public Task<CommandResult> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
@@ -27,7 +25,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             try
             {
-                var bankAcount = _accountRepository.GetById(request.BankAccountId);
+                var bankAcount = _unitOfWork.AccountRepository.GetById(request.BankAccountId);
 
                 if (bankAcount is null)
                     return new Exception("Bank account not found!");
@@ -42,7 +40,7 @@ namespace MoneyAdmin.Domain.Handlers
                     request.AccountKind,
                     payment);
 
-                _expenseRepository.Add(expense);
+                _unitOfWork.ExpenseRepository.Add(expense);
 
                 bankAcount.AddDebit(payment);
 

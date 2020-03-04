@@ -14,14 +14,11 @@ namespace MoneyAdmin.Domain.Handlers
     public sealed class CreateExpenseCommandHandlerTests
     {
         private readonly CreateExpenseCommandHandler _sut;
-        private readonly IAccountRepository _accountRepository;
-        private readonly IExpenseRepository _expenseRepository;
+        private readonly IUnitOfWork _unitOfWork;
         public CreateExpenseCommandHandlerTests()
         {
-            _accountRepository = Substitute.For<IAccountRepository>();
-            _expenseRepository = Substitute.For<IExpenseRepository>();
-
-            _sut = new CreateExpenseCommandHandler(_accountRepository, _expenseRepository);
+            _unitOfWork = Substitute.For<IUnitOfWork>();
+            _sut = new CreateExpenseCommandHandler(_unitOfWork);
         }
 
         [TestMethod]
@@ -29,7 +26,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             //Arrange
             var bankAccount = new BankAccount("Nuconta", 100);
-            _accountRepository.GetById(bankAccount.Id).Returns(bankAccount);
+            _unitOfWork.AccountRepository.GetById(bankAccount.Id).Returns(bankAccount);
 
             var command = new CreateExpenseCommand
             {
@@ -54,7 +51,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             //Arrange
             var bankAccount = new BankAccount("Nuconta", 100);
-            _accountRepository.GetById(bankAccount.Id).Returns(bankAccount);
+            _unitOfWork.AccountRepository.GetById(bankAccount.Id).Returns(bankAccount);
 
             var command = new CreateExpenseCommand
             {

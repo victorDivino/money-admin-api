@@ -8,6 +8,7 @@ namespace MoneyAdmin.Infra.Data.UnitOfWork
     {
         private readonly MoneyAdminContext _context;
         private IAccountRepository accountRepository;
+        private IExpenseRepository expenseRepository;
 
         public UnitOfWork(MoneyAdminContext context)
         {
@@ -22,6 +23,17 @@ namespace MoneyAdmin.Infra.Data.UnitOfWork
                     accountRepository = new AccountRepository(_context);
 
                 return accountRepository;
+            }
+        }
+
+        public IExpenseRepository ExpenseRepository
+        {
+            get
+            {
+                if (expenseRepository == null)
+                    expenseRepository = new ExpenseRepository(_context);
+
+                return expenseRepository;
             }
         }
 

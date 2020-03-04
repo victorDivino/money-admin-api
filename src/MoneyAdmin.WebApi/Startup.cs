@@ -39,6 +39,8 @@ namespace MoneyAdmin.WebApi
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+
             services.AddMvc().AddFluentValidation();
             services.AddCors();
 
