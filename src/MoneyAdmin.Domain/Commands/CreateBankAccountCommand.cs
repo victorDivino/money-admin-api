@@ -3,12 +3,8 @@ using MoneyAdmin.Domain.Validators;
 
 namespace MoneyAdmin.Domain.Commands
 {
-    public class CreateAccountCommand : CommandBase
+    public class CreateBankAccountCommand : CommandBase
     {
-        public CreateAccountCommand()
-        {
-        }
-
         public string Name { get; set; }
 
         public decimal InitialValue { get; set; }

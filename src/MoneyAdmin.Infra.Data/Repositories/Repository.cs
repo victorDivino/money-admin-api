@@ -29,10 +29,5 @@ namespace MoneyAdmin.Infra.Data.Repositories
         {
             return _context.Set<T>().SingleOrDefault(m => m.Id == id);
         }
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
     }
 }

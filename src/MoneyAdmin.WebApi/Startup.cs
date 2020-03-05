@@ -33,12 +33,14 @@ namespace MoneyAdmin.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(AccountMappingProfile));
-            services.AddMediatR(typeof(CreateAccountCommand));
+            services.AddMediatR(typeof(CreateBankAccountCommand));
             services.AddControllers();
             services.AddDbContext<MoneyAdminContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddScoped<IAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
+            services.AddScoped<IBankAccountRepository, BankAccountRepository>();
+            services.AddScoped<IBankAccountRepositoryReadOnly, BankAccountRepositoryReadOnly>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+
             services.AddMvc().AddFluentValidation();
             services.AddCors();
 

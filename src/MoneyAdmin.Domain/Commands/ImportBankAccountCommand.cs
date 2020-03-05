@@ -4,9 +4,9 @@ using MoneyAdmin.Domain.Validators;
 
 namespace MoneyAdmin.Domain.Commands
 {
-    public class CreateAccountBatchCommand : CommandBase
+    public class ImportBankAccountCommand : CommandBase
     {
-        public CreateAccountBatchCommand(Stream File)
+        public ImportBankAccountCommand(Stream File)
         {
             this.File = File;
         }

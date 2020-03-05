@@ -36,7 +36,7 @@ namespace MoneyAdmin.Domain.CsvMaps
             // Arrange
             using var stream = new MemoryStream();
             using var writer = new StreamWriter(stream);
-            writer.WriteLine("Name,Amount");
+            writer.WriteLine("Name,Balance");
             writer.WriteLine(new string(character, count) + ",1000");
             writer.Flush();
             stream.Position = 0;
@@ -51,8 +51,9 @@ namespace MoneyAdmin.Domain.CsvMaps
         {
             using var reader = new StreamReader(stream);
             using var sut = new CsvReader(reader, CultureInfo.InvariantCulture);
-            sut.Configuration.RegisterClassMap<AccountCsvMap>();
-            sut.GetRecords<Account>().ToList();
+            sut.Configuration.IncludePrivateMembers = true;
+            sut.Configuration.RegisterClassMap<BankAccountCsvMap>();
+            sut.GetRecords<BankAccount>().ToList();
         }
     }
 }

@@ -12,18 +12,17 @@ using MoneyAdmin.Domain.Interfaces;
 
 namespace MoneyAdmin.Domain.Handlers
 {
-    public class CreateAccountBatchCommandHandler : IRequestHandler<CreateAccountBatchCommand, CommandResult>
+    public class ImportBankAccountCommandHandler : IRequestHandler<ImportBankAccountCommand, CommandResult>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateAccountBatchCommandHandler(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+        public ImportBankAccountCommandHandler(IUnitOfWork unitOfWork)
+            => _unitOfWork = unitOfWork;
 
-        public Task<CommandResult> Handle(CreateAccountBatchCommand request, CancellationToken cancellationToken) => Create(request).AsTask;
+        public Task<CommandResult> Handle(ImportBankAccountCommand request, CancellationToken cancellationToken)
+            => Create(request).AsTask;
 
-        private CommandResult Create(CreateAccountBatchCommand command)
+        private CommandResult Create(ImportBankAccountCommand command)
         {
             try
             {
@@ -33,8 +32,8 @@ namespace MoneyAdmin.Domain.Handlers
                 using (var reader = new StreamReader(command.File))
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    csv.Configuration.RegisterClassMap<AccountCsvMap>();
-                    var accounts = csv.GetRecords<Account>();
+                    csv.Configuration.RegisterClassMap<BankAccountCsvMap>();
+                    var accounts = csv.GetRecords<BankAccount>();
 
                     if (accounts == null)
                         return new Exception("Cvs file is empty");

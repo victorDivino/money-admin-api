@@ -10,15 +10,15 @@ using NSubstitute;
 namespace MoneyAdmin.Domain.Handlers
 {
     [TestClass]
-    public class CreateAccountBatchCommandHandlerTest
+    public class ImportBankAccountCommandHandlerTests
     {
         private IUnitOfWork _unitOfWork;
-        private CreateAccountBatchCommandHandler _sut;
+        private ImportBankAccountCommandHandler _sut;
 
-        public CreateAccountBatchCommandHandlerTest()
+        public ImportBankAccountCommandHandlerTests()
         {
             _unitOfWork = Substitute.For<IUnitOfWork>();
-            _sut = new CreateAccountBatchCommandHandler(_unitOfWork);
+            _sut = new ImportBankAccountCommandHandler(_unitOfWork);
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace MoneyAdmin.Domain.Handlers
             writer.Flush();
             stream.Position = 0;
 
-            var command = new CreateAccountBatchCommand(stream);
+            var command = new ImportBankAccountCommand(stream);
 
             // Action
             var result = await _sut.Handle(command, new CancellationToken());
@@ -46,7 +46,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             // Arrange
             using var stream = new MemoryStream();
-            var command = new CreateAccountBatchCommand(stream);
+            var command = new ImportBankAccountCommand(stream);
 
             // Action
             var result = await _sut.Handle(command, new CancellationToken());
