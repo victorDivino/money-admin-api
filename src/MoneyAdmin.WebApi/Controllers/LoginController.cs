@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MoneyAdmin.Domain.Models;
 using MoneyAdmin.Infra.Data.Repositories;
 using MoneyAdmin.WebApi.Services;
+using MoneyAdmin.WebApi.ViewModels;
 
 namespace MoneyAdmin.WebApi.Controllers
 {
@@ -13,20 +12,17 @@ namespace MoneyAdmin.WebApi.Controllers
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<dynamic>> Authenticate([FromBody]Login model)
+        public IActionResult Login(LoginViewModel loginViewModel)
         {
-            var user = LoginRepository.Get(model.UserName, model.PassWord);
+            var user = UserRepository.Get(loginViewModel.UserName, loginViewModel.Password);
 
             if (user == null)
                 return BadRequest("Not Found");
 
             var token = TokenServices.GeneratorToken(user);
-            user.PassWord = "";
-            return new
-            {
-                user,
-                token
-            };
+            user.Password = "";
+
+            return new OkObjectResult(new { user, token });
         }
     }
 }
