@@ -14,9 +14,7 @@ namespace MoneyAdmin.Domain.Handlers
         private readonly IUnitOfWork _unitOfWork;
 
         public CreateExpenseCommandHandler(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+            => _unitOfWork = unitOfWork;
 
         public Task<CommandResult> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
             => CreateExpense(request).AsTask;

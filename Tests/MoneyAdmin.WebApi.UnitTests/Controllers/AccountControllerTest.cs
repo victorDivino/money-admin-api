@@ -14,15 +14,15 @@ namespace MoneyAdmin.WebApi.Controllers
     [TestClass]
     public class AccountControllerTest
     {
-        private readonly AccountController _sut;
-        private readonly IAccountRepositoryReadOnly _repository;
+        private readonly BankAccountController _sut;
+        private readonly IBankAccountRepositoryReadOnly _repository;
         private readonly IMediator _mediator;
 
         public AccountControllerTest()
         {
             _mediator = Substitute.For<IMediator>();
-            _repository = Substitute.For<IAccountRepositoryReadOnly>();
-            _sut = new AccountController(_mediator, _repository);
+            _repository = Substitute.For<IBankAccountRepositoryReadOnly>();
+            _sut = new BankAccountController(_mediator, _repository);
         }
 
         [TestMethod]
@@ -30,10 +30,10 @@ namespace MoneyAdmin.WebApi.Controllers
         {
             // Arrange
             var file = Substitute.For<IFormFile>();
-            _mediator.Send(Arg.Any<CreateAccountBatchCommand>()).Returns(new CommandResult());
+            _mediator.Send(Arg.Any<ImportBankAccountCommand>()).Returns(new CommandResult());
 
             // Action
-            var result = await _sut.PostFile(file);
+            var result = await _sut.Import(file);
 
             // Assert
             result.Should().BeOfType(typeof(OkResult));
@@ -43,7 +43,7 @@ namespace MoneyAdmin.WebApi.Controllers
         public async Task ShouldReturnBadRequestResultToPostFileMethod()
         {
             // Action
-            var result = await _sut.PostFile(null);
+            var result = await _sut.Import(null);
 
             // Assert
             result.Should().BeOfType(typeof(BadRequestObjectResult));

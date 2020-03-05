@@ -4,13 +4,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MoneyAdmin.Domain.Commands
 {
     [TestClass]
-    public sealed class CreateAccountCommandTests
+    public sealed class CreateBankAccountCommandTests
     {
         [TestMethod]
         public void CreateAccountWithNameValidShouldTrue()
         {
             // Arrange
-            var command = new CreateAccountCommand
+            var command = new CreateBankAccountCommand
             {
                 Name = "NuConta"
             };
@@ -26,7 +26,7 @@ namespace MoneyAdmin.Domain.Commands
         public void CreateAccountWithNameInvalidShouldFalse(int nameLegth)
         {
             // Arrange
-            var command = new CreateAccountCommand
+            var command = new CreateBankAccountCommand
             {
                 Name = new string('a', nameLegth)
             };
@@ -39,7 +39,7 @@ namespace MoneyAdmin.Domain.Commands
         public void CreateAccountWithNameNullShouldFalse()
         {
             // Arrange
-            var command = new CreateAccountCommand
+            var command = new CreateBankAccountCommand
             {
                 Name = null
             };

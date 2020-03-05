@@ -9,27 +9,28 @@ using MoneyAdmin.Domain.Interfaces;
 
 namespace MoneyAdmin.Domain.Handlers
 {
-    public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, CommandResult>
+    public class CreateBankAccountCommandHandler : IRequestHandler<CreateBankAccountCommand, CommandResult>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateAccountCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateBankAccountCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public Task<CommandResult> Handle(CreateAccountCommand command, CancellationToken cancellationToken) => Create(command).AsTask;
+        public Task<CommandResult> Handle(CreateBankAccountCommand request, CancellationToken cancellationToken)
+            => Create(request).AsTask;
 
-        private CommandResult Create(CreateAccountCommand command)
+        private CommandResult Create(CreateBankAccountCommand request)
         {
             try
             {
-                if (!command.IsValid)
+                if (!request.IsValid)
                     return new Exception("Name Invalid");
 
-                var account = _mapper.Map<BankAccount>(command);
+                var account = _mapper.Map<BankAccount>(request);
 
                 _unitOfWork.AccountRepository.Add(account);
 

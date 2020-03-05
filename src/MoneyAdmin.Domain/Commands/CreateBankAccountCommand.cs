@@ -3,7 +3,7 @@ using MoneyAdmin.Domain.Validators;
 
 namespace MoneyAdmin.Domain.Commands
 {
-    public class CreateAccountCommand : CommandBase
+    public class CreateBankAccountCommand : CommandBase
     {
         public string Name { get; set; }
 

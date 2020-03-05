@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MoneyAdmin.Domain.Commands
 {
     [TestClass]
-    public class CreateAccountBatchCommandTests
+    public class ImportBankAccountCommandTests
     {
         [TestMethod]
         public void ShouldBeTrueWhenFileIsValid()
@@ -18,7 +18,7 @@ namespace MoneyAdmin.Domain.Commands
             writer.Flush();
             stream.Position = 0;
 
-            var sut = new CreateAccountBatchCommand(stream);
+            var sut = new ImportBankAccountCommand(stream);
 
             // Assert
             sut.IsValid.Should().BeTrue();
@@ -29,7 +29,7 @@ namespace MoneyAdmin.Domain.Commands
         {
             // Arrange
             using var stream = new MemoryStream();
-            var sut = new CreateAccountBatchCommand(stream);
+            var sut = new ImportBankAccountCommand(stream);
 
             // Assert
             sut.IsValid.Should().BeFalse();

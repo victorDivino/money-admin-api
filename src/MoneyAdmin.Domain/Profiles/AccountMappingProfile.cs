@@ -7,7 +7,7 @@ namespace MoneyAdmin.Domain.Profiles
     {
         public AccountMappingProfile()
         {
-            CreateMap<CreateAccountCommand, BankAccount>()
+            CreateMap<CreateBankAccountCommand, BankAccount>()
                 .ForMember(dest => dest.Balance, m => m.MapFrom(a => a.InitialValue));
         }
     }

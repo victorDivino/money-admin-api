@@ -10,24 +10,24 @@ using NSubstitute;
 namespace MoneyAdmin.Domain.Handlers
 {
     [TestClass]
-    public sealed class CreateAccountCommandHandlerTests
+    public sealed class CreateBankAccountCommandHandlerTests
     {
-        private readonly CreateAccountCommandHandler _sut;
+        private readonly CreateBankAccountCommandHandler _sut;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateAccountCommandHandlerTests()
+        public CreateBankAccountCommandHandlerTests()
         {
             _mapper = Substitute.For<IMapper>();
             _unitOfWork = Substitute.For<IUnitOfWork>();
-            _sut = new CreateAccountCommandHandler(_unitOfWork, _mapper);
+            _sut = new CreateBankAccountCommandHandler(_unitOfWork, _mapper);
         }
 
         [TestMethod]
         public async Task CreateAccountShouldTrue()
         {
             // Arrange
-            var command = new CreateAccountCommand
+            var command = new CreateBankAccountCommand
             {
                 Name = "NuConta"
             };
@@ -43,7 +43,7 @@ namespace MoneyAdmin.Domain.Handlers
         public async Task CreateAccountShouldFalse()
         {
             // Arrange
-            var command = new CreateAccountCommand();
+            var command = new CreateBankAccountCommand();
 
             // Action
             var commandResult = await _sut.Handle(command, new CancellationToken());

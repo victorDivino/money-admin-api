@@ -17,14 +17,14 @@ namespace MoneyAdmin.Domain.Profiles
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(profile));
             var mapper = new Mapper(configuration);
 
-            var source = new CreateAccountCommand()
+            var source = new CreateBankAccountCommand()
             {
                 Name = "NuConta",
                 InitialValue = 154
             };
 
             // Action
-            var destination = mapper.Map<CreateAccountCommand, BankAccount>(source);
+            var destination = mapper.Map<CreateBankAccountCommand, BankAccount>(source);
 
             // Assert
             using (new AssertionScope())

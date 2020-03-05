@@ -3,7 +3,7 @@ using MoneyAdmin.Domain.Commands;
 
 namespace MoneyAdmin.Domain.Validators
 {
-    class CreateAccountBatchCommandValidator : AbstractValidator<CreateAccountBatchCommand>
+    class CreateAccountBatchCommandValidator : AbstractValidator<ImportBankAccountCommand>
     {
         public CreateAccountBatchCommandValidator()
         {
