@@ -7,6 +7,8 @@ namespace MoneyAdmin.Domain.Models
     {
         public string Name { get; private set; }
 
+        protected Category() { }
+
         public Category(string name)
         {
             Id = Guid.NewGuid();

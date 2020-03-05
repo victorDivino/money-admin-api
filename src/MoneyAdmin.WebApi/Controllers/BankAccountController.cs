@@ -21,10 +21,11 @@ namespace MoneyAdmin.WebApi.Controllers
             : base(mediator)
             => _bankAccountRepositoryReadOnly = bankAccountRepositoryReadOnly;
 
-        public ActionResult<IEnumerable<BankAccount>> Get()
+        [HttpGet("all")]
+        public ActionResult<IEnumerable<BankAccount>> GetAll()
             => Ok(_bankAccountRepositoryReadOnly.GetAll());
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult> Create(CreateBankAccountCommand createAccountCommand)
             => await SendCommand(createAccountCommand);
 

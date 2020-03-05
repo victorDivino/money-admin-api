@@ -37,8 +37,8 @@ namespace MoneyAdmin.WebApi
             services.AddControllers();
             services.AddDbContext<MoneyAdminContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IBankAccountRepository, AccountRepository>();
-            services.AddScoped<IBankAccountRepositoryReadOnly, AccountRepositoryReadOnly>();
+            services.AddScoped<IBankAccountRepository, BankAccountRepository>();
+            services.AddScoped<IBankAccountRepositoryReadOnly, BankAccountRepositoryReadOnly>();
             services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
             services.AddMvc().AddFluentValidation();

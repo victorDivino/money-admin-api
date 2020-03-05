@@ -10,6 +10,8 @@ namespace MoneyAdmin.Domain.Models
         public ExpenseCategory Category { get; private set; }
         public ICollection<ExpensePayment> Payments { get; private set; }
 
+        private Expense() { }
+
         public Expense(Guid bankAccountId, string name, decimal amount, string details, DateTime dueDate, AccountKind kind = AccountKind.Simple, params ExpensePayment[] payments)
             : base(bankAccountId, name, amount, details, dueDate, kind)
         {

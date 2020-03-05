@@ -20,7 +20,7 @@ namespace MoneyAdmin.Infra.Data.UnitOfWork
             get
             {
                 if (accountRepository == null)
-                    accountRepository = new AccountRepository(_context);
+                    accountRepository = new BankAccountRepository(_context);
 
                 return accountRepository;
             }

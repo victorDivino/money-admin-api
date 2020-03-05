@@ -16,6 +16,6 @@ namespace MoneyAdmin.Infra.Data
         {
         }
 
-        public DbSet<BankAccount> Accounts { get; set; }
+        public DbSet<BankAccount> BankAccounts { get; set; }
     }
 }
