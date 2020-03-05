@@ -9,7 +9,7 @@ namespace MoneyAdmin.WebApi.Services
 {
     public static class TokenServices
     {
-        public static string GeneratorToken(Login login)
+        public static string GeneratorToken(User login)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
