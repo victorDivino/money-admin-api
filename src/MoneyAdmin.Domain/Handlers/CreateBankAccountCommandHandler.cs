@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using MediatR;
 using MoneyAdmin.Domain.Commands;
 using MoneyAdmin.Domain.Core.Commands;
@@ -12,12 +11,10 @@ namespace MoneyAdmin.Domain.Handlers
     public class CreateBankAccountCommandHandler : IRequestHandler<CreateBankAccountCommand, CommandResult>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
 
-        public CreateBankAccountCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateBankAccountCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
 
         public Task<CommandResult> Handle(CreateBankAccountCommand request, CancellationToken cancellationToken)
@@ -30,9 +27,9 @@ namespace MoneyAdmin.Domain.Handlers
                 if (!request.IsValid)
                     return new Exception("Name Invalid");
 
-                var account = _mapper.Map<BankAccount>(request);
+                var newBankAccount = new BankAccount(request.Name, request.InitialValue);
 
-                _unitOfWork.AccountRepository.Add(account);
+                _unitOfWork.BankAccountRepository.Add(newBankAccount);
 
                 return CommandResult.Success();
             }

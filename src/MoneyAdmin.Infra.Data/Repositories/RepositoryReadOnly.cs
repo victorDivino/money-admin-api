@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using MoneyAdmin.Domain.Core.Models;
 using MoneyAdmin.Domain.Interfaces;
@@ -20,7 +19,7 @@ namespace MoneyAdmin.Infra.Data.Repositories
             return _context.Set<T>().SingleOrDefault(e => e.Id == id);
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
             return _context.Set<T>();
         }

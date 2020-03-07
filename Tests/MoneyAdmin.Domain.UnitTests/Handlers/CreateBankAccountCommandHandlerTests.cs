@@ -20,7 +20,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             _mapper = Substitute.For<IMapper>();
             _unitOfWork = Substitute.For<IUnitOfWork>();
-            _sut = new CreateBankAccountCommandHandler(_unitOfWork, _mapper);
+            _sut = new CreateBankAccountCommandHandler(_unitOfWork);
         }
 
         [TestMethod]

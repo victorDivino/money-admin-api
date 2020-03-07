@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using AutoMapper;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -17,12 +18,14 @@ namespace MoneyAdmin.WebApi.Controllers
         private readonly BankAccountController _sut;
         private readonly IBankAccountRepositoryReadOnly _repository;
         private readonly IMediator _mediator;
+        public readonly IMapper _mapper;
 
         public AccountControllerTest()
         {
             _mediator = Substitute.For<IMediator>();
+            _mapper = Substitute.For<IMapper>();
             _repository = Substitute.For<IBankAccountRepositoryReadOnly>();
-            _sut = new BankAccountController(_mediator, _repository);
+            _sut = new BankAccountController(_mediator, _repository, _mapper);
         }
 
         [TestMethod]

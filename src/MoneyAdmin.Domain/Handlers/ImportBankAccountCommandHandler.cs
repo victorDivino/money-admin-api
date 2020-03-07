@@ -38,7 +38,7 @@ namespace MoneyAdmin.Domain.Handlers
                     if (accounts == null)
                         return new Exception("Cvs file is empty");
 
-                    _unitOfWork.AccountRepository.AddRange(accounts);
+                    _unitOfWork.BankAccountRepository.AddRange(accounts);
                 }
 
                 return CommandResult.Success();

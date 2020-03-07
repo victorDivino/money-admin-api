@@ -23,7 +23,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             try
             {
-                var bankAcount = _unitOfWork.AccountRepository.GetById(request.BankAccountId);
+                var bankAcount = _unitOfWork.BankAccountRepository.GetById(request.BankAccountId);
 
                 if (bankAcount is null)
                     return new Exception("Bank account not found!");

@@ -26,7 +26,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             //Arrange
             var bankAccount = new BankAccount("Nuconta", 100);
-            _unitOfWork.AccountRepository.GetById(bankAccount.Id).Returns(bankAccount);
+            _unitOfWork.BankAccountRepository.GetById(bankAccount.Id).Returns(bankAccount);
 
             var command = new CreateExpenseCommand
             {
@@ -51,7 +51,7 @@ namespace MoneyAdmin.Domain.Handlers
         {
             //Arrange
             var bankAccount = new BankAccount("Nuconta", 100);
-            _unitOfWork.AccountRepository.GetById(bankAccount.Id).Returns(bankAccount);
+            _unitOfWork.BankAccountRepository.GetById(bankAccount.Id).Returns(bankAccount);
 
             var command = new CreateExpenseCommand
             {

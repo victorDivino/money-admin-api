@@ -4,7 +4,7 @@ namespace MoneyAdmin.Domain.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IBankAccountRepository AccountRepository { get; }
+        IBankAccountRepository BankAccountRepository { get; }
         IExpenseRepository ExpenseRepository { get; }
 
         int Commit();
