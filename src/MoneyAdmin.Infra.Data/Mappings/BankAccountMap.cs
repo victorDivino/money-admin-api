@@ -9,7 +9,6 @@ namespace MoneyAdmin.Infra.Data.Mappings
         public void Configure(EntityTypeBuilder<BankAccount> builder)
         {
             builder.ToTable("BankAccount");
-
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Name)

@@ -3,32 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MoneyAdmin.Infra.Data.Migrations
 {
-    public partial class SqlServerCreate : Migration
+    public partial class mssqlCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Accounts");
-
-            migrationBuilder.CreateTable(
-                name: "BankAccounts",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
-                    Balance = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BankAccounts", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Discriminator = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -53,9 +37,9 @@ namespace MoneyAdmin.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_Expenses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Expenses_BankAccounts_BankAccountId",
+                        name: "FK_Expenses_BankAccount_BankAccountId",
                         column: x => x.BankAccountId,
-                        principalTable: "BankAccounts",
+                        principalTable: "BankAccount",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -83,9 +67,9 @@ namespace MoneyAdmin.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_Incomes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Incomes_BankAccounts_BankAccountId",
+                        name: "FK_Incomes_BankAccount_BankAccountId",
                         column: x => x.BankAccountId,
-                        principalTable: "BankAccounts",
+                        principalTable: "BankAccount",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -112,9 +96,9 @@ namespace MoneyAdmin.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_ExpensePayments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ExpensePayments_BankAccounts_BankAccountId",
+                        name: "FK_ExpensePayments_BankAccount_BankAccountId",
                         column: x => x.BankAccountId,
-                        principalTable: "BankAccounts",
+                        principalTable: "BankAccount",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -141,9 +125,9 @@ namespace MoneyAdmin.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_IncomePayments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_IncomePayments_BankAccounts_BankAccountId",
+                        name: "FK_IncomePayments_BankAccount_BankAccountId",
                         column: x => x.BankAccountId,
-                        principalTable: "BankAccounts",
+                        principalTable: "BankAccount",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -210,23 +194,7 @@ namespace MoneyAdmin.Infra.Data.Migrations
                 name: "Incomes");
 
             migrationBuilder.DropTable(
-                name: "BankAccounts");
-
-            migrationBuilder.DropTable(
                 name: "Category");
-
-            migrationBuilder.CreateTable(
-                name: "Accounts",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Accounts", x => x.Id);
-                });
         }
     }
 }

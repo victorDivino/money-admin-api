@@ -29,12 +29,13 @@ namespace MoneyAdmin.Infra.Data.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(100)")
-                        .HasMaxLength(100);
+                        .IsRequired()
+                        .HasColumnType("varchar(60)")
+                        .HasMaxLength(60);
 
                     b.HasKey("Id");
 
-                    b.ToTable("BankAccounts");
+                    b.ToTable("BankAccount");
                 });
 
             modelBuilder.Entity("MoneyAdmin.Domain.Models.Category", b =>
@@ -48,6 +49,7 @@ namespace MoneyAdmin.Infra.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50);
 
@@ -83,9 +85,7 @@ namespace MoneyAdmin.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(60)")
-                        .HasMaxLength(60);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
