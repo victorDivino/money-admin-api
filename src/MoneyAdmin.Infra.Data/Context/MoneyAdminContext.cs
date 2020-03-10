@@ -11,7 +11,7 @@ namespace MoneyAdmin.Infra.Data
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlServer(@"Server=localhost,1433; Database=Master; User Id=SA; Password=Dockersql@");
+        => options.UseSqlServer(@"Server=localhost,1433; Database=Master; User Id=SA; Password=MoneyAdmin@123");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -17,8 +17,8 @@ namespace MoneyAdmin.Infra.Data.Mappings
                 .HasMaxLength(60)
                 .IsRequired();
 
-            builder.Ignore(x => x.Credits);
-            builder.Ignore(x => x.Debts);
+            builder.HasMany(x => x.Debts);
+            builder.HasMany(x => x.Credits);
         }
     }
 }
