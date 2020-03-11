@@ -5,7 +5,7 @@ namespace MoneyAdmin.Domain.Models
     public sealed class IncomePayment : Payment
     {
         public Guid IncomeId { get; private set; }
-        public Expense Income { get; private set; }
+        public Income Income { get; private set; }
 
         private IncomePayment() { }
 

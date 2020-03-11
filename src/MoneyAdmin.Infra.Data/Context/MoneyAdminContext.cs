@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MoneyAdmin.Domain;
+using MoneyAdmin.Domain.Models;
 using MoneyAdmin.Infra.Data.Mappings;
 
 namespace MoneyAdmin.Infra.Data
@@ -16,9 +17,15 @@ namespace MoneyAdmin.Infra.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new BankAccountMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
             base.OnModelCreating(modelBuilder);
+            
         }
 
         public DbSet<BankAccount> BankAccounts { get; set; }
+        public DbSet<ExpensePayment> ExpensePayments { get; set; }
+        public DbSet<IncomePayment> IncomePayments { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<Income> Incomes { get; set; }
     }
 }
